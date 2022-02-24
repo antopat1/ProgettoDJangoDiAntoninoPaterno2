@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block head_title %} {{block.super}} | Post{% endblock head_title %}
+{% block content %}
+<font color="red"> <h1>Cronologia Articoli </h1></font>
+   <hr>
+   <br>
+   {%for news in object_list%}
+      <h4><strong>Giornalista: </strong><a href="{{news.get_absolute_url}}">{{news.user}}</a></h4>
+      <h4><strong>Titolo: </strong>{{news.title}}</h4>
+      <h4><strong>Dettagli articolo: </strong>{{news.content}}</h4>
+      <h9><strong>Data_Registr.: </strong>{{news.datetime}}</h9>
+      <br>
+      <strong>TX_Ropsten:</strong><a class="article-content" href="https://ropsten.etherscan.io/tx/{{ news.txId }}"><h15>{{news.txId}}</h15></a>
+
+      <hr>
+   {%endfor%}
+<br>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+<a class="nav-link" href="/"><font color="green"><div style="text-align: left"><li>Torna alla Homepage!</li></div></font></a>
+{% endblock content %}
+

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<font color="red"><div align="right"><h5>Sistema leggitimità articoli giornalisti</h5></div></font>
+<h8><div align="center"><i>(Hash message su Tx Ether_Testnet "Ropsten")</i></div></h8>
+
+
+   {% if not request.user.is_authenticated %}
+
+   <br>
+   <br>
+       <a class="nav-link" href="registrazione/"><font color="green"><li><b>Registra nuovo account</b></li></a>
+
+
+       <a class="nav-link" href="accounts/login"><font color="green"><li><b>Esegui Login</b></li></a>
+
+   {% endif %}
+   <br>
+   {% if request.user.is_authenticated %}
+   <h5>Benvenuto! Accesso effettuato con l'User: {{request.user }}</h5>
+
+      <a class="nav-link" href="/visualizza_post/"><font color="green"><li><b>Visualizza cronologicamente articoli con link "Giornalista" diretto alle corrispondenti pubblicazioni e TX</b></li></font></a>
+      <a class="nav-link" href="/chose_Idsearch/"><font color="green"><li><b>Cerca articoli per ID visualizzandoli a browser o download Json -> input Hash</b></li></font></a>
+      <a class="nav-link" href="/journalist_id_search/"><font color="green"><li><b>Visualizza gli articoli dell'ID giornalista desiderato</b></li></font></a>
+      <a class="nav-link" href="/news_x_journ/"><font color="green"><li><b>Visualizza il numero di articoli pubblicati da ciascun giornalista</b></li></font> </a><a class="nav-link" href="/outJson_lastH/"><font color="green"><li><b>Estrai Json degli articoli pubblicati nell'ultima ora</b></li></font></a>
+   {% endif %}
+
+   {% if request.user.is_superuser %}
+   <br>
+   <font color="brown"><h5>Essendo uno degli ADMIN disponi dei seguenti privilegi aggiuntivi: </h5><font color="green">
+   <a class="nav-link" href="/scrivi_post/"><font color="green"><li><b>Scrivere articolo impedendo la registrazione stringa "hack" e certificarne in blockchain l'autenticità</b></li></font> </a>
+   <a class="nav-link" href="/word_in_item/"><font color="green"><li><b>Determina ripetitività di specifica stringa negli articoli inseriti dai giornalisti</b></li></font></a>
+   {% endif %}
+
+{% endblock content %}
+

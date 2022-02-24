@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<font color="red"><h3>Notizie per Giornalista</h3></font>
+<h6>Di seguito l'elenco dei giornalisti e il corrispondente numero di articoli inseriti </h6>
+{% for el in contUser.items %}
+     <br>
+     {{ el|cut:'(<User: '   }}
+     <br>
+{% endfor %}
+<br>
+ <a class="nav-link" href="/"><font color="green"><div style="text-align: left"><li>Torna alla Homepage!</li></div></font></a>
+{% endblock content %}
+

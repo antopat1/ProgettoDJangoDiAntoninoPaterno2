@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <font color="red"><h4>Notizie inserite dal giornalista da {{user}}</h4></font>
+   <hr>
+   <br>
+   {% for news in user.elenco.all %}
+      <h4><strong>Titolo: </strong>{{news.title}}</h4>
+      <h4><strong>Contenuto articolo: </strong>{{ news.content}}</h4>
+      <h4><strong>Data ora registrazione: </strong>{{ news.datetime}}</h4>
+      <h4><strong>TX_Ropsten: </strong>{{ news.txId}}</h4>
+      <hr>
+   {%endfor%}
+<br>
+
+         <a class="nav-link" href="/"><font color="green"><div style="text-align: left"><li>Torna alla Homepage!</li></div></font></a>
+{% endblock content %}
